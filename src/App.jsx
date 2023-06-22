@@ -48,25 +48,26 @@ function App() {
                 onChange={ (event) => setListItem(event.target.value)}
               />
                 <div>
-                    <button>Add</button>
+                  <button>Add</button>
                 </div>
             </form>
+            
             {/*Display TODO LIST*/} 
-            {list.map((listItem, i) => {
+            {list.map((listItem, index) => {
               //line through text styling once checked complete
               const completed = [];
               if (listItem.complete){
                 completed.push("completed")
               }
               //list
-              return <div key={i}>
+              return <div key={index}>
                 <span className={completed}>{listItem.text}</span>
-                <input onChange = {(event) => {
-                  handleComplete(i);
+                <input onChange = {() => {
+                  handleComplete(index);
                 }} 
                 checked={listItem.complete} 
                 type="checkbox"/>
-                <button onClick={(event) => { handleDelete(i); }}>Delete</button>
+                <button onClick={(event) => { handleDelete(index); }}>Delete</button>
               </div>
             })}
     </div>
